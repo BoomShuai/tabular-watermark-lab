@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tabular-watermark-lab"
+version = "1.1.0"
+description = "Independent table watermark reproduction, robustness experiments and execution audits"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24,<3", "pandas>=2,<3", "scikit-learn>=1.3,<2", "filelock>=3.12,<5"]
+
+[project.optional-dependencies]
+ml = ["xgboost>=2,<4", "scikit-image>=0.21,<1"]
+
+[project.scripts]
+tabular-watermark = "tabularmark_runner.runner:main"
+tabular-watermark-demo = "tabularmark_runner.demo:main"
+tabular-compare = "tabularmark_ext.compare_cli:main"
+tabular-audit = "tabularmark_ext.audit_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["tabularmark_runner*", "tabularmark_ext*"]
